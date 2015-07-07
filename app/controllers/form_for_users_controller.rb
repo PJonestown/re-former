@@ -16,6 +16,19 @@ class FormForUsersController < ApplicationController
     @form_for_user = FormForUser.find(params[:id])
   end
 
+  def edit
+    @form_for_user = FormForUser.find(params[:id])
+  end
+
+  def update
+    @form_for_user = FormForUser.find(params[:id])
+    if @form_for_user.update(form_for_user_params)
+      redirect_to @form_for_user
+    else
+      render :edit
+    end
+  end
+
   private
 
   def form_for_user_params
